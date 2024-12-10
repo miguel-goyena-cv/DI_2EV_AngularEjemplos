@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Message</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (allContacts$ | async; as contacts) {
+            @for (contact of contacts; track $index) {
+            <tr>
+                <th scope="row">{{$index}}</th>
+                <td>{{contact.email}}</td>
+                <td>{{contact.message}}</td>
+                <td>{{contact.date}} | date</td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

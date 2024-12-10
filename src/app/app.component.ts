@@ -7,10 +7,11 @@ import { ProfilesService } from './servicios/profiles.service';
 import { Profile } from './modelos/Profile';
 import { Observable } from 'rxjs/internal/Observable';
 import { AsyncPipe } from '@angular/common';
+import { ContactListComponent } from "./contact-list/contact-list.component";
 
 @Component({
   selector: 'app-root',
-  imports: [FotoperfilComponent, ExperienceComponent, ContactFormComponent, AsyncPipe],
+  imports: [FotoperfilComponent, ExperienceComponent, ContactFormComponent, AsyncPipe, ContactListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

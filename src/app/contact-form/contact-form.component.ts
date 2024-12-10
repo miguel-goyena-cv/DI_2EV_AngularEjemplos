@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ContactInfo } from '../modelos/ContactInfo';
+import { ContactsService } from '../servicios/contacts.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -15,6 +18,8 @@ export class ContactFormComponent {
     message: new FormControl('', Validators.required)
   });
 
+  constructor(private http: HttpClient, private contactService: ContactsService) { }
+
   get email() {
     return this.contactForm.get('email');
   }
@@ -24,7 +29,16 @@ export class ContactFormComponent {
   }
 
   sendMessage() {
-    alert('Formulario: '+this.contactForm.value.email);
+    const contactInformation = new ContactInfo(this.contactForm.get('email')?.value || '', this.contactForm.get('message')?.value || '');
+    
+    this.contactService.setContact(contactInformation).subscribe(
+      newContact => {
+        alert('Contact Created:'+ JSON.stringify(newContact));
+      }
+    )
+    // this.http.post('https://672b4bd6976a834dd0267918.mockapi.io/contacts', contactInformation).subscribe(newContact => {
+    //   alert('Contact Created:'+ JSON.stringify(newContact));
+    // });
   }
 
 }

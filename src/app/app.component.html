@@ -3,11 +3,11 @@
     <div class="col-6">
       <p class="display-1">{{title}}</p>
     </div> 
-    @for (perfil of listaPerfiles; track $index) {
+    <!-- @for (perfil of listaPerfiles; track $index) {
       <div class="col-3">
         <app-fotoperfil [tieneBoton]="perfil.conBoton" [myName]="perfil.nombre" [srcImage]="perfil.foto"/>
       </div>
-    }
+    } -->
     @if (listaPerfilesAsync$ | async; as perfiles) {
       @for (perfil of perfiles; track $index) {
         <div class="col-3">
@@ -42,5 +42,8 @@
   </div>
   <div class="container-fluid">
     <app-contact-form></app-contact-form>
+  </div>
+  <div class="container-fluid">
+    <app-contact-list></app-contact-list>
   </div>
 </div>
