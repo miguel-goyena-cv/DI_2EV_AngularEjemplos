@@ -1,6 +1,6 @@
 
 <img [src]="srcImage()" class="img-fluid rounded">
-<p class="lead text-center" [hidden]="nombreOcultado">{{myName()}}</p>
+<p class="lead text-center" [hidden]="nombreOcultado">{{myName() | uppercase}}</p>
 @if (tieneBoton()) {
     <button class="btn btn-primary" (click)="ocultarNombre()">Toggle Nombre</button>
 }
