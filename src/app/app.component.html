@@ -2,11 +2,13 @@
   <div class="row">
     <div class="col-6">
       <p class="display-1">{{title}}</p>
-    </div> 
-    @for (perfil of listaPefiles; track $index) {
-      <div class="col-3">
-        <app-fotoperfil [tieneBoton]="perfil.conBoton" [myName]="perfil.nombre" [srcImage]="perfil.foto"/>
-      </div>
+    </div>
+    @if (listaPerfilesAsync$ | async; as perfiles) {
+      @for (perfil of perfiles; track $index) {
+        <div class="col-3">
+          <app-fotoperfil [tieneBoton]="perfil.conBoton" [myName]="perfil.nombre" [srcImage]="perfil.foto" />
+        </div>
+      }
     }
   </div>
 </div>
