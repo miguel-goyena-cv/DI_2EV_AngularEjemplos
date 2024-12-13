@@ -1,20 +1,31 @@
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss'
 })
 export class ContactFormComponent {
 
-  email = new FormControl('');
-  message = new FormControl('');
+  contactForm = new FormGroup({
+    email: new FormControl('', [Validators.required,
+    Validators.email]),
+    message: new FormControl('', [Validators.required])
+  });
 
+  get email() {
+    return this.contactForm.get('email');
+  }
+  get message() {
+    return this.contactForm.get('message');
+  }
 
   sendMessage() {
-    alert('Mensaje: \n' + this.message.value + '\nenviado a: ' + this.email.value);
+    alert('Formulario: ' + this.contactForm.value.email);
   }
+
 
 }

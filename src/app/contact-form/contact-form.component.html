@@ -1,11 +1,22 @@
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Dirección
-        Email</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" [formControl]="email"
-        placeholder="name@example.com">
-</div>
-<div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" [formControl]="message" rows="3"></textarea>
-</div>
-<button type="button" class="btn btn-primary" (click)="sendMessage()">Send Message</button>
+<form [formGroup]="contactForm" (ngSubmit)="sendMessage()">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Dirección
+            Email</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="email"
+            placeholder="name@example.com">
+    </div>
+    <div *ngIf="email?.invalid && (email?.dirty ||
+email?.touched)" class="alert alert-danger">
+        <div *ngIf="email?.hasError('required')">
+            Email is required
+        </div>
+        <div *ngIf="email?.hasError('email')">
+            Format is invalid
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="message" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
