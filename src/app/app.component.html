@@ -1,49 +1,9 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-6">
-      <p class="display-1">{{title}}</p>
-    </div> 
-    <!-- @for (perfil of listaPerfiles; track $index) {
-      <div class="col-3">
-        <app-fotoperfil [tieneBoton]="perfil.conBoton" [myName]="perfil.nombre" [srcImage]="perfil.foto"/>
-      </div>
-    } -->
-    @if (listaPerfilesAsync$ | async; as perfiles) {
-      @for (perfil of perfiles; track $index) {
-        <div class="col-3">
-          <app-fotoperfil [tieneBoton]="perfil.conBoton" [myName]="perfil.nombre" [srcImage]="perfil.foto"/>
-        </div>
-      }
-    }
-
-  </div>
-  <div class="row d-flex">
-    <div class="col-12 d-flex justify-content-center">
-      <h1>Experiencia Laboral</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <app-experience>
-        <div class="card-body">
-          Tracasa
-          2016-2018
-        </div>
-      </app-experience>
-    </div>
-    <div class="col-12 d-flex justify-content-center">
-      <app-experience>
-        <div class="card-body">
-          Indra
-          2018-Actualidad
-        </div>
-      </app-experience>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <app-contact-form></app-contact-form>
-  </div>
-  <div class="container-fluid">
-    <app-contact-list></app-contact-list>
-  </div>
-</div>
+<h1>Angular Router App</h1>
+<nav>
+  <ul>
+    <li><a routerLink="/informacion-perfil" routerLinkActive="active" ariaCurrentWhenActive="page">Información Perfil</a></li>
+    <li><a routerLink="/información-contacto" routerLinkActive="active" ariaCurrentWhenActive="page">Información Contacto</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
