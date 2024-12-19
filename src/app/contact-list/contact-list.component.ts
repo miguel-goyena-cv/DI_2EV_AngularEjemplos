@@ -21,10 +21,14 @@ export class ContactListComponent {
   ngOnInit() {
     this.allContacts$ = this.contactService.getAllContacts();
 
+    alert('He recuperado la lista de contactos: Voy a subscribirme');
+
     // We subscribe to changes in Contacts
     this.subscriptionUpdate = this.contactService.changesOnContacts.subscribe(
       () => {
+        alert('Voy a refrescar la lista de contactos');
         this.allContacts$ = this.contactService.getAllContacts();
+        alert('Ya la he refrescado');
       }
     );
   }

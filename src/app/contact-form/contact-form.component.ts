@@ -35,6 +35,7 @@ export class ContactFormComponent {
     this.contactService.setContact(contactInformation).subscribe(
       newContact => {
         alert('Contact Created:'+ JSON.stringify(newContact));
+        alert('Voy a mandar una señal de actualizacion');
         this.contactService.notifyUpdateContact(null);
       }
     )
